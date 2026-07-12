@@ -29,4 +29,27 @@ public class CandidateService {
 
     }
 
+    public Candidate updateCandidate(Long id, Candidate updatedCandidate) {
+
+        Candidate existingCandidate = candidateRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Candidate not found with id : " + id));
+
+        existingCandidate.setName(updatedCandidate.getName());
+        existingCandidate.setParty(updatedCandidate.getParty());
+        existingCandidate.setSymbol(updatedCandidate.getSymbol());
+        existingCandidate.setDescription(updatedCandidate.getDescription());
+
+        return candidateRepository.save(existingCandidate);
+    }
+
+    public void deleteCandidate(Long id) {
+
+        Candidate candidate = candidateRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Candidate not found with id : " + id));
+
+        candidateRepository.delete(candidate);
+    }
+
 }
