@@ -48,6 +48,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/candidates/**")
                         .hasAnyRole("ADMIN", "VOTER")
 
+                        .requestMatchers(HttpMethod.POST, "/api/votes")
+                        .hasRole("VOTER")
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter,
