@@ -20,4 +20,11 @@ public class ResultController {
         return resultService.getAllResults();
 
     }
+
+    @GetMapping("/winner")
+    public ResultResponse getWinner() {
+
+        return resultService.getWinner();
+
+    }
 }

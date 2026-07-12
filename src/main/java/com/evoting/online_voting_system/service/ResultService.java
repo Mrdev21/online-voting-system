@@ -41,4 +41,25 @@ public class ResultService {
         return results;
     }
 
+    public ResultResponse getWinner() {
+
+        List<ResultResponse> results = getAllResults();
+
+        if (results.isEmpty()) {
+            throw new RuntimeException("No candidates found");
+        }
+
+        ResultResponse winner = results.get(0);
+
+        for (ResultResponse result : results) {
+
+            if (result.getVotes() > winner.getVotes()) {
+                winner = result;
+            }
+
+        }
+
+        return winner;
+    }
+
 }

@@ -2,6 +2,7 @@ package com.evoting.online_voting_system.service;
 
 import com.evoting.online_voting_system.dto.VoteRequest;
 import com.evoting.online_voting_system.entity.Vote;
+import com.evoting.online_voting_system.exception.AlreadyVotedException;
 import com.evoting.online_voting_system.repository.CandidateRepository;
 import com.evoting.online_voting_system.repository.UserRepository;
 import com.evoting.online_voting_system.repository.VoteRepository;
@@ -35,7 +36,7 @@ public class VoteService {
                         new RuntimeException("Candidate not found"));
 
         if (voteRepository.findByUser(user).isPresent()) {
-            throw new RuntimeException("You have already voted");
+            throw new AlreadyVotedException("You have already voted");
         }
 
         Vote vote = new Vote();
