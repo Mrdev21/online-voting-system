@@ -1,0 +1,9 @@
+import api from "./api";
+
+export const getNotifications = () => {
+  return api.get("/notifications");
+};
+
+export const markAllAsRead = () => {
+  return api.put("/notifications/read");
+};

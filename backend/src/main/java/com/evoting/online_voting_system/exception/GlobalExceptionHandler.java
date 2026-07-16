@@ -74,4 +74,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(VotingClosedException.class)
+    public ResponseEntity<?> handleVotingClosed(VotingClosedException ex) {
+
+        return ResponseEntity
+                .badRequest()
+                .body(Map.of("message", ex.getMessage()));
+    }
+
 }

@@ -24,18 +24,27 @@ public class User {
 
     private Boolean hasVoted = false;
 
+    private String phone;
+
+    private String address;
+
+    private String profilePhoto;
+
     // No Args Constructor
     public User() {
     }
 
     // All Args Constructor
-    public User(Long id, String fullName, String email, String password, Role role, Boolean hasVoted) {
+    public User(Long id, String fullName, String email, String password, Role role, Boolean hasVoted, String phone,
+                String address,
+                String profilePhoto) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.password = password;
         this.role = role;
         this.hasVoted = hasVoted;
+
     }
 
     public Long getId() {
@@ -84,5 +93,29 @@ public class User {
 
     public void setHasVoted(Boolean hasVoted) {
         this.hasVoted = hasVoted;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
     }
 }

@@ -1,5 +1,6 @@
 package com.evoting.online_voting_system.service;
 
+import com.evoting.online_voting_system.dto.UserProfileUpdateRequest;
 import com.evoting.online_voting_system.entity.User;
 import com.evoting.online_voting_system.exception.UserNotFoundException;
 import com.evoting.online_voting_system.repository.UserRepository;
@@ -46,6 +47,9 @@ public class UserService {
         existingUser.setEmail(updatedUser.getEmail());
 //        existingUser.setPassword(updatedUser.getPassword());
         existingUser.setRole(updatedUser.getRole());
+        existingUser.setPhone(updatedUser.getPhone());
+        existingUser.setAddress(updatedUser.getAddress());
+        existingUser.setProfilePhoto(updatedUser.getProfilePhoto());
 
         return userRepository.save(existingUser);
     }
@@ -58,6 +62,28 @@ public class UserService {
 
         userRepository.delete(existingUser);
 
+    }
+
+    public User getCurrentUser(String email) {
+
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+    }
+
+    public User updateCurrentUser(String email, UserProfileUpdateRequest request) {
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() ->
+                        new RuntimeException("User not found"));
+
+        user.setFullName(request.getFullName());
+        user.setEmail(request.getEmail());
+        user.setPhone(request.getPhone());
+        user.setAddress(request.getAddress());
+        user.setProfilePhoto(request.getProfilePhoto());
+
+        return userRepository.save(user);
     }
 
 

@@ -24,6 +24,9 @@ public class AuthService {
     @Autowired
     private JwtService jwtService;
 
+    @Autowired
+    private NotificationService notificationService;
+
     public User registerUser(RegisterRequest request){
 
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
@@ -38,7 +41,16 @@ public class AuthService {
         user.setRole(request.getRole());
         user.setHasVoted(false);
 
-        return userRepository.save(user);
+        User savedUser = userRepository.save(user);
+
+        notificationService.create(
+                savedUser.getFullName() + " registered successfully",
+                "USER"
+        );
+
+        return savedUser;
+
+
     }
 
     public LoginResponse loginUser(LoginRequest request) {
@@ -55,6 +67,7 @@ public class AuthService {
 
         return new LoginResponse(
                 token,
+                user.getRole().name(),
                 "Login Successful"
         );
 

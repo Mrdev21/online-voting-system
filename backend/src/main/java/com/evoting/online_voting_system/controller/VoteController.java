@@ -22,12 +22,4 @@ public class VoteController {
 
         return voteService.castVote(authentication.getName(), request);
     }
-
-//    @PostMapping
-//    public Vote castVote(@RequestBody VoteRequest request,
-//                         Authentication authentication) {
-//
-//        return voteService.castVote(authentication.getName(), request);
-//
-//    }
 }

@@ -18,15 +18,18 @@ public class Candidate {
 
     private String description;
 
+    private String photo;
+
     public Candidate() {
     }
 
-    public Candidate(Long id, String name, String party, String symbol, String description) {
+    public Candidate(Long id, String name, String party, String symbol, String description, String photo) {
         this.id = id;
         this.name = name;
         this.party = party;
         this.symbol = symbol;
         this.description = description;
+        this.photo = photo;
     }
 
     public Long getId() {
@@ -67,5 +70,13 @@ public class Candidate {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

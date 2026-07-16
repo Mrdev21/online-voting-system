@@ -5,14 +5,16 @@ public class ResultResponse {
     private String candidateName;
     private String party;
     private Long votes;
+    private String photo;
 
     public ResultResponse() {
     }
 
-    public ResultResponse(String candidateName, String party, Long votes) {
+    public ResultResponse(String candidateName, String party, Long votes, String photo) {
         this.candidateName = candidateName;
         this.party = party;
         this.votes = votes;
+        this.photo = photo;
     }
 
     public String getCandidateName() {
@@ -37,5 +39,13 @@ public class ResultResponse {
 
     public void setVotes(Long votes) {
         this.votes = votes;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

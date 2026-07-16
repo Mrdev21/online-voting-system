@@ -32,7 +32,8 @@ public class ResultService {
             ResultResponse response = new ResultResponse(
                     candidate.getName(),
                     candidate.getParty(),
-                    votes
+                    votes,
+                    candidate.getPhoto()
             );
 
             results.add(response);

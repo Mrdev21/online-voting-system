@@ -11,10 +11,21 @@ import java.util.List;
 public class CandidateService {
 
     @Autowired
+    private NotificationService notificationService;
+
+    @Autowired
     private CandidateRepository candidateRepository;
 
     public Candidate addCandidate(Candidate candidate) {
-        return candidateRepository.save(candidate);
+
+        Candidate savedCandidate = candidateRepository.save(candidate);
+
+        notificationService.create(
+                "Candidate " + savedCandidate.getName() + " added",
+                "CANDIDATE"
+        );
+
+        return savedCandidate;
     }
 
     public List<Candidate> getAllCandidates() {
@@ -39,6 +50,7 @@ public class CandidateService {
         existingCandidate.setParty(updatedCandidate.getParty());
         existingCandidate.setSymbol(updatedCandidate.getSymbol());
         existingCandidate.setDescription(updatedCandidate.getDescription());
+        existingCandidate.setPhoto(updatedCandidate.getPhoto());
 
         return candidateRepository.save(existingCandidate);
     }

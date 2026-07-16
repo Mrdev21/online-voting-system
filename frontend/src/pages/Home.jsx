@@ -1,5 +1,21 @@
+import HeroSection from "../components/home/HeroSection";
+import LiveElections from "../components/home/LiveElections";
+import FeaturesSection from "../components/home/FeaturesSection";
+import HowItWorks from "../components/home/HowItWorks";
+import StatisticsSection from "../components/home/StatisticsSection";
+import Footer from "../components/home/Footer";
+
 function Home() {
-  return <h1>Home Page</h1>;
+  return (
+    <>
+      <HeroSection />
+      <LiveElections />
+      <FeaturesSection />
+      <HowItWorks />
+      <StatisticsSection />
+      <Footer />
+    </>
+  );
 }
 
 export default Home;
