@@ -171,7 +171,7 @@ function Footer() {
         {/* Bottom */}
         <div className="mt-16 flex flex-col items-center gap-4 border-t border-white/10 pt-8 text-center md:flex-row md:justify-between md:text-left">
           <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} e-VOTING System. All Rights Reserved.
+            © {new Date().getFullYear()} e-VOTING System. All Rights Reserved. Himanshu Chaudhari.
           </p>
 
           <p className="text-sm text-slate-500">
