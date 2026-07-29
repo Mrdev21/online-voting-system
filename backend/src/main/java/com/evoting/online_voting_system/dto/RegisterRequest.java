@@ -1,9 +1,7 @@
 package com.evoting.online_voting_system.dto;
 
-import com.evoting.online_voting_system.entity.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class RegisterRequest {
@@ -19,15 +17,13 @@ public class RegisterRequest {
     @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
-    @NotNull(message = "Role is required")
-    private Role role;
+    public RegisterRequest() {
+    }
 
-
-    public RegisterRequest(String fullName, String email, String password, Role role) {
+    public RegisterRequest(String fullName, String email, String password) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.role = role;
     }
 
     public String getFullName() {
@@ -52,13 +48,5 @@ public class RegisterRequest {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 }
