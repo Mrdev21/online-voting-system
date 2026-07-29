@@ -3,6 +3,7 @@ package com.evoting.online_voting_system.service;
 import com.evoting.online_voting_system.dto.LoginRequest;
 import com.evoting.online_voting_system.dto.LoginResponse;
 import com.evoting.online_voting_system.dto.RegisterRequest;
+import com.evoting.online_voting_system.entity.Role;
 import com.evoting.online_voting_system.entity.User;
 import com.evoting.online_voting_system.exception.EmailAlreadyExistsException;
 import com.evoting.online_voting_system.exception.InvalidCredentialsException;
@@ -38,7 +39,7 @@ public class AuthService {
         user.setFullName(request.getFullName());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(request.getRole());
+        user.setRole(Role.VOTER);
         user.setHasVoted(false);
 
         User savedUser = userRepository.save(user);
