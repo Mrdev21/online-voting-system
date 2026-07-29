@@ -20,24 +20,59 @@ function Login() {
     });
   };
 
+  // const handleSubmit = async (e) => {
+
+  //   e.preventDefault();
+
+  //   try {
+  //     setLoading(true);
+
+  //     const response = await login(formData);
+
+  //     localStorage.setItem("token", response.data.token);
+  //     localStorage.setItem("role", response.data.role);
+
+  //     if (response.data.role === "ADMIN") {
+  //       navigate("/admin/dashboard");
+  //     } else {
+  //       navigate("/voter/dashboard");
+  //     }
+
+  //   } catch (error) {
+  //     console.log(error.response?.data || error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    console.log("Submit clicked");
 
     try {
       setLoading(true);
 
+      console.log("Before API");
+
       const response = await login(formData);
+
+      console.log("After API", response);
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
+
+      console.log("Before Navigate");
 
       if (response.data.role === "ADMIN") {
         navigate("/admin/dashboard");
       } else {
         navigate("/voter/dashboard");
       }
+
+      console.log("After Navigate");
     } catch (error) {
-      console.log(error.response?.data || error.message);
+      console.log("ERROR:", error);
+      console.log(error.response?.data);
     } finally {
       setLoading(false);
     }
